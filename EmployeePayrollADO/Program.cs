@@ -11,6 +11,7 @@ namespace EmployeePayrollADO
             EmployeeModel model = new EmployeeModel();
             Console.WriteLine("Enter \n 1.Retrieve Data from Sql server");
             Console.WriteLine("2. Update Salary to 3000000");
+            Console.WriteLine("3. Retrieve Updated Salary");
             int option = Convert.ToInt32(Console.ReadLine());
             switch (option)
             {
@@ -19,6 +20,9 @@ namespace EmployeePayrollADO
                     break;
                 case 2:
                     repository.UpdateSalaryColumn(model);
+                    repository.GetEmployeeDetails();
+                    break;
+                case 3:
                     repository.GetEmployeeDetails();
                     break;
             }

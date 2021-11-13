@@ -8,7 +8,7 @@ namespace EmployeePayrollADO
     {
         public int empId { get; set; }
         public string name { get; set; }
-        public double BasicPay { get; set; }
+        public double Salary { get; set; }
         public DateTime startDate { get; set; }
         public string emailId { get; set; }
         public string Gender { get; set; }
