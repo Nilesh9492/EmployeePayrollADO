@@ -54,5 +54,33 @@ namespace EmployeePayrollADO
                 this.sqlconnection.Close();
             }
         }
+        public void UpdateSalaryColumn(EmployeeModel model)
+        {
+            try
+            {
+                sqlconnection.Open();
+                string query = @"update employee_payroll set salary=3000000 where name='Nilesh'";
+                SqlCommand command = new SqlCommand(query, sqlconnection);
+
+                int result = command.ExecuteNonQuery();
+                if (result != 0)
+                {
+                    Console.WriteLine("Salary Updated Successfully ");
+                }
+                else
+                {
+                    Console.WriteLine("salary update failed");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                sqlconnection.Close();
+            }
+
+        }
     }
 }
