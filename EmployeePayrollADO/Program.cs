@@ -8,6 +8,7 @@ namespace EmployeePayrollADO
         {
             Console.WriteLine("Employee Payroll ADO!");
             EmployeeRepo repository = new EmployeeRepo();
+            repository.GetEmployeeDetails();
         }
     }
 }
