@@ -17,6 +17,7 @@ namespace EmployeePayrollADO
             Console.WriteLine("6. Retrieve data from Sql");
             Console.WriteLine("7. Update Salary data in table");
             Console.WriteLine("8. View the employee details between date range");
+            Console.WriteLine("9. Using Transaction insert into Tables");
             int option = Convert.ToInt32(Console.ReadLine());
             switch (option)
             {
@@ -50,6 +51,10 @@ namespace EmployeePayrollADO
                 case 8:
                     ER eR = new ER();
                     eR.DataBasedOnDateRange();
+                    break;
+                case 9:
+                    Transaction transaction = new Transaction();
+                    transaction.InsertIntoTables();
                     break;
             }
         }
