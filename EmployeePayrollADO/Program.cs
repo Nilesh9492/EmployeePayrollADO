@@ -14,6 +14,9 @@ namespace EmployeePayrollADO
             Console.WriteLine("3. Retrieve Updated Salary");
             Console.WriteLine("4. Retrieve Data Based on Date");
             Console.WriteLine("5. Algebric Functions");
+            Console.WriteLine("6. Retrieve data from Sql");
+            Console.WriteLine("7. Update Salary data in table");
+            Console.WriteLine("8. View the employee details between date range");
             int option = Convert.ToInt32(Console.ReadLine());
             switch (option)
             {
@@ -34,6 +37,19 @@ namespace EmployeePayrollADO
                 case 5:
                     EmployeeRepo repository1 = new EmployeeRepo();
                     repository1.AlgebricFunctions("F");
+                    break;
+                case 6:
+                    ER er = new ER();
+                    er.RetrieveAllData();
+                    break;
+                case 7:
+                    ER eRRepository = new ER();
+                    eRRepository.UpdateSalaryQuery();
+                    eRRepository.RetrieveAllData();
+                    break;
+                case 8:
+                    ER eR = new ER();
+                    eR.DataBasedOnDateRange();
                     break;
             }
         }

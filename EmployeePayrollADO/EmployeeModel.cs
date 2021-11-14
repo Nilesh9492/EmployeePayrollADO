@@ -9,6 +9,7 @@ namespace EmployeePayrollADO
         public int empId { get; set; }
         public string name { get; set; }
         public double Salary { get; set; }
+        public double BasicPay { get; set; }
         public DateTime startDate { get; set; }
         public string emailId { get; set; }
         public string Gender { get; set; }
@@ -19,5 +20,7 @@ namespace EmployeePayrollADO
         public double TaxablePay { get; set; }
         public double IncomeTax { get; set; }
         public double NetPay { get; set; }
+        public int CompanyID { get; set; }
+        public string CompanyName { get; set; }
     }
 }
