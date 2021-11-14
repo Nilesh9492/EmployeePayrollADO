@@ -97,14 +97,63 @@ namespace EmployeePayrollADO
                 int res = command.ExecuteNonQuery();
                 if (res == 0)
                 {
-                    Console.WriteLine("Query NOt executed...");
+                    Console.WriteLine("Query Not executed.");
                 }
                 else
                 {
-                    Console.WriteLine("Query executed successfully...");
+                    Console.WriteLine("Query executed successfully.");
                 }
                 this.sqlconnection.Close();
             }
         }
-    }
+        public int ViewDataBasedOnDate(EmployeeModel model)
+        {
+
+            int count = 0;
+            using (sqlconnection)
+            {
+
+                string query = @"select * from employee_payroll where startDate between('2021-01-01') and getdate()";
+
+                SqlCommand command = new SqlCommand(query, this.sqlconnection);
+
+                sqlconnection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        ViewEmployeeDetails(reader);
+                        count++;
+                    }
+                }
+                reader.Close();
+            }
+            return count;
+        }
+        public void ViewEmployeeDetails(SqlDataReader reader)
+        {
+            EmployeeModel model = new EmployeeModel();
+
+            model.empId = Convert.ToInt32(reader["empId"]);
+            model.name = reader["name"].ToString();
+            model.Salary = Convert.ToDouble(reader["Salary"]);
+            model.startDate = reader.GetDateTime(3);
+            model.emailId = reader["emailId"].ToString();
+            model.Gender = reader["Gender"].ToString();
+            model.Department = reader["Department"].ToString();
+            model.PhoneNumber = Convert.ToDouble(reader["PhoneNumber"]);
+            model.Address = reader["Address"].ToString();
+            model.Deductions = Convert.ToDouble(reader["Deductions"]);
+            model.TaxablePay = Convert.ToDouble(reader["TaxablePay"]);
+            model.IncomeTax = Convert.ToDouble(reader["IncomeTax"]);
+            model.NetPay = Convert.ToDouble(reader["NetPay"]);
+            Console.WriteLine("{0} {1} {2}  {3} {4} {5}  {6}  {7} {8} {9} {10} {11} {12}", model.empId, model.name, model.Salary, model.startDate, model.emailId, model.Gender, model.Department, model.PhoneNumber, model.Address, model.Deductions, model.TaxablePay, model.IncomeTax, model.NetPay);
+            Console.WriteLine("\n");
+
+        }
+    } 
 }
+
+    
+

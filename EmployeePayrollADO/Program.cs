@@ -12,6 +12,7 @@ namespace EmployeePayrollADO
             Console.WriteLine("Enter \n 1.Retrieve Data from Sql server");
             Console.WriteLine("2. Update Salary to 3000000");
             Console.WriteLine("3. Retrieve Updated Salary");
+            Console.WriteLine("4. Retrieve Data Based on Date");
             int option = Convert.ToInt32(Console.ReadLine());
             switch (option)
             {
@@ -24,6 +25,10 @@ namespace EmployeePayrollADO
                     break;
                 case 3:
                     repository.GetEmployeeDetails();
+                    break;
+                case 4:
+                    EmployeeRepo repo = new EmployeeRepo();
+                    repo.ViewDataBasedOnDate(model);
                     break;
             }
         }
