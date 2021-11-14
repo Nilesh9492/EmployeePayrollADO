@@ -13,6 +13,7 @@ namespace EmployeePayrollADO
             Console.WriteLine("2. Update Salary to 3000000");
             Console.WriteLine("3. Retrieve Updated Salary");
             Console.WriteLine("4. Retrieve Data Based on Date");
+            Console.WriteLine("5. Algebric Functions");
             int option = Convert.ToInt32(Console.ReadLine());
             switch (option)
             {
@@ -29,6 +30,10 @@ namespace EmployeePayrollADO
                 case 4:
                     EmployeeRepo repo = new EmployeeRepo();
                     repo.ViewDataBasedOnDate(model);
+                    break;
+                case 5:
+                    EmployeeRepo repository1 = new EmployeeRepo();
+                    repository1.AlgebricFunctions("F");
                     break;
             }
         }

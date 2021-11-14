@@ -152,6 +152,33 @@ namespace EmployeePayrollADO
             Console.WriteLine("\n");
 
         }
+        public string AlgebricFunctions(string Gender)
+        {
+            string result = null;
+            string query = @"select sum(Salary) as TotalSalary,min(Salary) as MinSalary,max(Salary) as MaxSalary,Round(avg(Salary),0) as AvgSalary,Gender,Count(*) from employee_payroll where Gender =" + "'" + Gender + "'" + " group by Gender";
+            SqlCommand sqlCommand = new SqlCommand(query, this.sqlconnection);
+            sqlconnection.Open();
+            SqlDataReader reader = sqlCommand.ExecuteReader();
+            if (reader.HasRows)
+            {
+                while (reader.Read())
+                {
+                    Console.WriteLine("Total Salary {0}", reader[0]);
+                    Console.WriteLine("Min Salary {0}", reader[1]);
+                    Console.WriteLine("Max Salary {0}", reader[2]);
+                    Console.WriteLine("Average Salary {0}", reader[3]);
+                    Console.WriteLine("Grouped By Gender {0}", reader[4]);
+                    Console.WriteLine("No of employess {0}", reader[5]);
+                    result += reader[4] + " " + reader[0] + " " + reader[1] + " " + reader[2] + " " + reader[3] + " " + reader[5];
+                }
+            }
+            else
+            {
+                result = "Table is Empty";
+            }
+            reader.Close();
+            return result;
+        }
     } 
 }
 
