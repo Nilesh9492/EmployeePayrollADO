@@ -18,6 +18,7 @@ namespace EmployeePayrollADO
             Console.WriteLine("7. Update Salary data in table");
             Console.WriteLine("8. View the employee details between date range");
             Console.WriteLine("9. Using Transaction insert into Tables");
+            Console.WriteLine("10. Remove Employee");
             int option = Convert.ToInt32(Console.ReadLine());
             switch (option)
             {
@@ -55,6 +56,10 @@ namespace EmployeePayrollADO
                 case 9:
                     Transaction transaction = new Transaction();
                     transaction.InsertIntoTables();
+                    break;
+                case 10:
+                    Transaction transaction1 = new Transaction();
+                    transaction1.RemoveEmployee();
                     break;
             }
         }
